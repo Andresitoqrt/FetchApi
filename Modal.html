@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar</title>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="css/Style.css">
+</head>
+<body>
+
+    <dialog id="modal-Agregar" open>
+       <article>
+        <header>
+            <a href="#" class="close" id="BtnCerrarModal"></a>
+            <h3>Agregar Integrantes</h3>
+        </header>
+        <form id="FrmAgregar">
+            <input type="text" id="nombre" placeholder="Nombre" required>
+                <input type="text" id="apellido" placeholder="Apellido" required>
+                <input type="email" id="correo" placeholder="Correo electrónico" required>
+                <input type="number" id="edad" placeholder="edad" required>
+                <button type="submit" class="contrast">Guardar</button>
+ 
+        </form>
+       </article>
+    </dialog>
+
+</body>
+</html>

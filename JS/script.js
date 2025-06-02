@@ -39,3 +39,50 @@ function mostrarDatos(datos) {
 
 //Lamada inical para que se carguen los datos que vienen del servidor
 ObtenerPersonas();
+
+//Agregar un nuevo registro 
+const modal = document.getElementById("modal-Agregar");
+const btnAgregar = document.getElementById("BtnAbrirModal");
+const btnCerrar = document.getElementById("BtnCerrarModal");
+
+btnAgregar.addEventListener("click" , () => {
+    modal.showModal();
+});
+
+btnCerrar.addEventListener("click", () => {
+    modal.close();
+});
+
+document.getElementById("FrmAgregar").addEventListener("submit", async e => {
+    e.preventDefault();
+    
+const Nombre = document.getElementById("Nombre").Value.trim();
+const Apellido = document.getElementById("Apellido").Value.trim();
+const email = document.getElementById("email").Value.trim();
+const edad = document.getElementById("edad").Value.trim();
+
+if(!Nombre||!Apellido||!email||!edad){
+    alert("Complete todos los campos");
+    return;
+}
+
+const respuesta = await fetch(API_URL, {
+    method:"POST" ,
+    headers: {'Content-Type' : 'application/json'},
+    body: JSON.stringify({Nombre, Apellido, email, edad})
+});
+
+if (respuesta.ok){
+    alert("El registro fue agregardo correctamente");
+
+    document.getElementById("FrmAgregar").reset();
+
+    modal.close();
+
+    ObtenerPersonas();
+}
+else{
+    alert("Hubo un error al agrgar");
+}
+
+});
