@@ -56,10 +56,10 @@ btnCerrar.addEventListener("click", () => {
 document.getElementById("FrmAgregar").addEventListener("submit", async e => {
     e.preventDefault();
     
-const Nombre = document.getElementById("Nombre").Value.trim();
-const Apellido = document.getElementById("Apellido").Value.trim();
-const email = document.getElementById("email").Value.trim();
-const edad = document.getElementById("edad").Value.trim();
+const Nombre = document.getElementById("Nombre").value.trim();
+const Apellido = document.getElementById("Apellido").value.trim();
+const email = document.getElementById("email").value.trim();
+const edad = document.getElementById("edad").value.trim();
 
 if(!Nombre||!Apellido||!email||!edad){
     alert("Complete todos los campos");
