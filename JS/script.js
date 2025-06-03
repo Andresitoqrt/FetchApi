@@ -29,7 +29,7 @@ function mostrarDatos(datos) {
             <td>${persona.edad}</td>
             <td> 
                 <button>Editar</button>
-                <button>Eliminar</button>
+                <button onClick="Eliminarpersona(${persona.id})">Eliminar</button>
             </td>
 
         </tr>
@@ -86,3 +86,14 @@ else{
 }
 
 });
+
+
+async function Eliminarpersona(id){
+    const confirmacion = confirm ("¿Estas seguro de eliminar esto?🤔");
+
+    if(confirmacion){
+        await fetch(`${API_URL}/${id}` , {method:"DELETE"})
+
+        ObtenerPersonas();
+    }
+}
