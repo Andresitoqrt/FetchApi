@@ -142,6 +142,8 @@ document.getElementById("FrmEditar").addEventListener("submit",async e => {
         alert("Registro actualizado con exicto");
         modalEditar.close();
         ObtenerPersonas();
+    }else{
+        alert("Hubo un erro al actualizar")
     }
 
 });
