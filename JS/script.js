@@ -28,7 +28,7 @@ function mostrarDatos(datos) {
             <td>${persona.email}</td>
             <td>${persona.edad}</td>
             <td> 
-                <button>Editar</button>
+                <button onClick = "AbrirModalEditar('${persona.Nombre}','${persona.Apellido}','${persona.email}','${persona.edad}',${persona.id})">Editar</button>
                 <button onClick="Eliminarpersona(${persona.id})">Eliminar</button>
             </td>
 
@@ -97,3 +97,51 @@ async function Eliminarpersona(id){
         ObtenerPersonas();
     }
 }
+
+//Proceso para editar un registro
+const modalEditar = document.getElementById("modal-Editar");
+const BtnCerrarEditar = document.getElementById("BtnCerrarEditar");
+
+BtnCerrarEditar.addEventListener("click",() => {
+    modalEditar.close();//Cerrar modal editar
+});
+
+function AbrirModalEditar(Nombre,Apellido,email,edad,id){
+    //Se agregan los valores del registro en los input
+     document.getElementById("NombreEditar").value = Nombre;
+     document.getElementById("ApellidoEditar").value = Apellido;
+     document.getElementById("emailEditar").value = email;
+     document.getElementById("edadEditar").value = edad;
+     document.getElementById("idEditar").value = id;
+
+     modalEditar.showModal();//Modal se abre despues de agregar los valores a los input
+
+}
+
+document.getElementById("FrmEditar").addEventListener("submit",async e => {
+    e.preventDefault();//Evita que el formulario se envie o (la rugamas salga corriendo )
+
+    const id = document.getElementById("idEditar").value;
+    const Nombre = document.getElementById("NombreEditar").value.trim();
+    const Apellido = document.getElementById("ApellidoEditar").value.trim();
+    const email = document.getElementById("emailEditar").value.trim();
+    const edad = document.getElementById("edadEditar").value.trim();
+
+    if(!id||!Nombre||!Apellido||!email||!edad){
+        alert("Complete todos los campos ")
+        return;
+    }
+
+    const respuesta = await fetch(`${API_URL}/${id}`, {
+        method: "PUT",
+        headers:{"Content-Type":"application/json"},
+        body: JSON.stringify({edad,email,Nombre,Apellido })
+    });
+
+    if(respuesta.ok){
+        alert("Registro actualizado con exicto");
+        modalEditar.close();
+        ObtenerPersonas();
+    }
+
+});

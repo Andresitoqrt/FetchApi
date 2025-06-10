@@ -50,7 +50,7 @@
         </div>
     </main>
 
-    <!--Modal para agrgar integrante-->
+    <!--Modal para agregar integrante-->
       <dialog id="modal-Agregar" >
        <article>
         <header>
@@ -68,6 +68,25 @@
        </article>
     </dialog>
 
+    <!--Modal para Editar-->
+    <dialog id="modal-Editar" >
+        <article>
+         <header>
+             <a href="#" class="close" id="BtnCerrarEditar"></a>
+             <h3>Editar integrante</h3>
+         </header>
+         <form id="FrmEditar">
+                <input type="hidden" id="idEditar"><!--Id del registro por Editar-->
+                 <input type="text" id="NombreEditar" placeholder="Nombre" required>
+                 <input type="text" id="ApellidoEditar" placeholder="Apellido" required>
+                 <input type="email" id="emailEditar" placeholder="Correo electrónico" required>
+                 <input type="number" id="edadEditar" placeholder="edad" required>
+                 <button type="submit" class="contrast">Guardar</button>
+  
+         </form>
+        </article>
+     </dialog>
+
 
     <!--Boton Flotante para agregar resitros-->
     <button class="add-button" id="BtnAbrirModal" title="Agregar Integrante">
@@ -77,3 +96,4 @@
     <script src="JS/script.js"></script>
 </body>
 </html>
+
